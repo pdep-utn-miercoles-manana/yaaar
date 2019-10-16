@@ -14,13 +14,28 @@ class Pirata {
 		return items.contains(unItem)
 	}
 
+	method cantidadItems() {
+		return items.size()
+	}
+
 	method pasadoDeGrog() {
 		return nivelEbriedad >= 90
 	}
 
 	method tomarGrog() {
 		nivelEbriedad += 5
+		self.gastarMoneda()
+	}
+	
+	method gastarMoneda() {
+		self.validarGastarMonedas()
 		cantidadMonedas--
+	}
+	
+	method validarGastarMonedas() {
+		if (cantidadMonedas == 0) {
+			throw new TripulanteException(message = 'Cantidad de monedas insuficientes... insert coin!')
+		}
 	}
 	
 	method podesSaquear(unaVictima) {
@@ -45,3 +60,5 @@ class PirataEspiaDeLaCorona inherits Pirata {
 		return super(unaVictima) && self.tiene('permiso de la corona')
 	}	
 }
+
+class TripulanteException inherits Exception {}

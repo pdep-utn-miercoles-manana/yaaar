@@ -9,7 +9,7 @@ class Barco {
 	}
 
 	method esVulnerableA(otroBarco) {
-		return self.cantidadTripulantes() <= otroBarco.cantidadtripulantes() / 2
+		return self.cantidadTripulantes() <= otroBarco.cantidadTripulantes() / 2
 	}
 	
 	method cantidadTripulantes() {
